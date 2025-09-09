@@ -20,9 +20,24 @@
       <!--entries according to the type entered-->
       <!-- agırlık inputları-->
       <div class="divler" id="agirlikdivi">
-        <input type="number" id="agirliktipi" placeholder="KG" />
-        <input type="number" id="agirliktipi2" placeholder="GRAM" />
-        <input type="number" id="agirliktipi3" placeholder="POUND" />
+        <input
+          type="number"
+          onchange="getInputValue(this) , updateValues(this)"
+          id="agirliktipi"
+          placeholder="KG"
+        />
+        <input
+          type="number"
+          onchange="getInputValue(this)"
+          id="agirliktipi2"
+          placeholder="GRAM"
+        />
+        <input
+          type="number"
+          onchange="getInputValue(this)"
+          id="agirliktipi3"
+          placeholder="POUND"
+        />
       </div>
       <!-- sıcaklık inputları-->
       <div class="divler" id="sicaklikdivi">
