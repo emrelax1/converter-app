@@ -3,11 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="javascript.js"></script>
     <title>CONVERTER APP</title>
   </head>
   <body>
     <div class="container">
-      <div></div>
+      <!--Chosee of converter type -->
+      <h1>CONVERTER APP</h1>
+      <select id="type" onchange="setSelectionValue(this)">
+        <option value="agirlik" selected>Ağırlık Dönüşümü</option>
+        <option value="sicaklik">Sıcaklık Dönüşümü</option>
+        <option value="uzunluk">Uzunluk Dönüşümü</option>
+        <option value="hacim">Hacim Dönüşümü</option>
+      </select>
+      <!--entries according to the type entered-->
+      <!-- agırlık inputları-->
+      <div class="divler" id="agirlikdivi">
+        <input type="number" id="agirliktipi" placeholder="KG" />
+        <input type="number" id="agirliktipi2" placeholder="GRAM" />
+        <input type="number" id="agirliktipi3" placeholder="POUND" />
+      </div>
+      <!-- sıcaklık inputları-->
+      <div class="divler" id="sicaklikdivi">
+        <input type="number" id="sicakliktipi" placeholder="°C" />
+        <input type="number" id="sicakliktipi2" placeholder="°F " />
+        <input type="number" id="sicakliktipi3" placeholder="K" />
+      </div>
+      <!-- uzunluk inputları-->
+      <div class="divler" id="uzunlukdivi">
+        <input type="number" id="uzunluktipi" placeholder="Metre" />
+        <input type="number" id="uzunluktipi2" placeholder="Santimetre " />
+        <input type="number" id="uzunluktipi3" placeholder="Feet " />
+        <input type="number" id="uzunluktipi4" placeholder="İnç " />
+      </div>
+      <!-- hacim inputları-->
+      <div class="divler" id="hacimdivi">
+        <input type="number" id="hacimtipi" placeholder="Litre " />
+        <input type="number" id="hacimtipi2" placeholder="Mililitre  " />
+        <input type="number" id="hacimtipi3" placeholder="Galon " />
+      </div>
     </div>
   </body>
 </html>
