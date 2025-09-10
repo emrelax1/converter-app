@@ -23,25 +23,35 @@
         <input
           oninput="this.value=this.value.replaceAll(/[^\d\.]/g, '');"
           type="number"
-          onchange="getInputValueAgirlik(this) "
           min="0"
+          onchange="weightConverter()"
           id="agirliktipi"
           placeholder="Bir değer giriniz"
         />
         <label style="color: white" for="agirlik">Dönüştürmek istiyorum:</label>
 
-        <select name="agirlik" id="girilen_agirlik">
-          <option value="">Kilogram(kg)</option>
-          <option value="">Gram(g)</option>
-          <option value="">Pound(lb)</option>
+        <select
+          name="agirlik"
+          id="girilen_agirlik"
+          onchange="weightConverter()"
+        >
+          <option value="kg">Kilogram(kg)</option>
+          <option value="g">Gram(g)</option>
+          <option value="lb">Pound(lb)</option>
         </select>
-        <label style="color: white" for="agirlik">'a</label>
+        <label style="color: white" for="agirlik">'dan</label>
 
-        <select name="agirlik" id="donusturulen_agirlik">
-          <option value="">Kilogram(kg)</option>
-          <option value="">Gram(g)</option>
-          <option value="">Pound(lb)</option>
+        <select
+          name="agirlik"
+          id="donusturulen_agirlik"
+          onchange="weightConverter()"
+        >
+          <option value="kg">Kilogram(kg)</option>
+          <option value="g">Gram(g)</option>
+          <option value="lb">Pound(lb)</option>
         </select>
+        <label style="color: white" for="agirliksonuc">'a = </label>
+        <input type="number" min="0" id="agirliksonuc" placeholder="" />
       </div>
       <!-- sıcaklık inputları-->
       <div class="divler" id="sicaklikdivi">
@@ -57,18 +67,28 @@
           >Dönüştürmek istiyorum:</label
         >
 
-        <select name="sicaklik" id="girilen_sicaklik">
-          <option value="">Kelvin (K)</option>
-          <option value="">Santigrat(°C)</option>
-          <option value="">Fahrenayt(°F)</option>
+        <select
+          name="sicaklik"
+          id="girilen_sicaklik"
+          onchange="heatConverter()"
+        >
+          <option value="k">Kelvin (K)</option>
+          <option value="c">Santigrat(°C)</option>
+          <option value="f">Fahrenayt(°F)</option>
         </select>
-        <label style="color: white" for="sicaklik">'a</label>
+        <label style="color: white" for="sicaklik">'dan</label>
 
-        <select name="sicaklik" id="donusturulen_sicaklik">
-          <option value="">Kelvin (K)</option>
-          <option value="">Santigrat(°C)</option>
-          <option value="">Fahrenayt(°F)</option>
+        <select
+          name="sicaklik"
+          id="donusturulen_sicaklik"
+          onchange="heatConverter()"
+        >
+          <option value="k">Kelvin (K)</option>
+          <option value="c">Santigrat(°C)</option>
+          <option value="f">Fahrenayt(°F)</option>
         </select>
+        <label style="color: white" for="sicakliksonuc">'a = </label>
+        <input type="number" min="0" id="sicakliksonuc" placeholder="" />
       </div>
       <!-- uzunluk inputları-->
       <div class="divler" id="uzunlukdivi">
@@ -81,44 +101,60 @@
           min="0"
         />
         <label style="color: white" for="uzunluk">Dönüştürmek istiyorum:</label>
-        <select name="uzunluk" id="girilen_uzunluk">
-          <option value="">Metre(m)</option>
-          <option value="">Santimetre(cm)</option>
-          <option value="">Feet(ft)</option>
-          <option value="">İnç(in)</option>
+        <select
+          onchange="lengthConverter()"
+          name="uzunluk"
+          id="girilen_uzunluk"
+        >
+          <option value="m">Metre(m)</option>
+          <option value="cm">Santimetre(cm)</option>
+          <option value="ft">Feet(ft)</option>
+          <option value="in">İnç(in)</option>
         </select>
         <label style="color: white" for="uzunluk">'dan</label>
 
-        <select name="uzunluk" id="donusturulen_uzunluk">
-          <option value="">Metre(m)</option>
-          <option value="">Santimetre(cm)</option>
-          <option value="">Feet(ft)</option>
-          <option value="">İnç(in)</option>
+        <select
+          onchange="lengthConverter()"
+          name="uzunluk"
+          id="donusturulen_uzunluk"
+        >
+          <option value="m">Metre(m)</option>
+          <option value="cm">Santimetre(cm)</option>
+          <option value="ft">Feet(ft)</option>
+          <option value="in">İnç(in)</option>
         </select>
+        <label style="color: white" for="uzunluksonuc">'a = </label>
+        <input type="number" min="0" id="uzunluksonuc" placeholder="" />
       </div>
       <!-- hacim inputları-->
       <div class="divler" id="hacimdivi">
         <input
           type="number"
           id="hacimtipi"
-          onchange="getInputValueHacim(this)"
+          onchange="volumeConverter()"
           placeholder="Bir değer giriniz"
           oninput="this.value=this.value.replaceAll(/[^\d\.]/g, '');"
           min="0"
         />
         <label style="color: white" for="hacim">Dönüştürmek istiyorum:</label>
         <select name="hacim" id="girilen_hacim">
-          <option value="">Litre(L)</option>
-          <option value="">Mililitre</option>
-          <option value="">Galon(gal)</option>
+          <option value="l">Litre(L)</option>
+          <option value="ml">Mililitre</option>
+          <option value="gal">Galon(gal)</option>
         </select>
         <label style="color: white" for="hacim">'dan</label>
 
-        <select name="hacim" id="donusturulen_hacim">
-          <option value="">Litre(L)</option>
-          <option value="">Mililitre</option>
-          <option value="">Galon(gal)</option>
+        <select
+          name="hacim"
+          onchange="volumeConverter()"
+          id="donusturulen_hacim"
+        >
+          <option value="l">Litre(L)</option>
+          <option value="ml">Mililitre</option>
+          <option value="gal">Galon(gal)</option>
         </select>
+        <label style="color: white" for="hacimsonuc">'a = </label>
+        <input type="number" min="0" id="hacimsonuc" placeholder="" />
       </div>
     </div>
   </body>

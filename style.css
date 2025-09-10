@@ -19,6 +19,19 @@ html {
 .none {
   display: none;
 }
+#agirlikdivi {
+  display: block;
+}
+#uzunlukdivi {
+  display: none;
+}
+#hacimdivi {
+  display: none;
+}
+#sicaklikdivi {
+  display: none;
+}
+
 .divler {
   display: flex;
   background-color: black;
