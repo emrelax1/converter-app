@@ -23,7 +23,7 @@
         <input
           oninput="this.value=this.value.replaceAll(/[^\d\.]/g, '');"
           type="number"
-          onchange="getInputValue(this) , updateValues(this)"
+          onchange="getInputValueAgirlik(this) "
           min="0"
           id="agirliktipi"
           placeholder="Bir değer giriniz"
@@ -42,26 +42,12 @@
           <option value="">Gram(g)</option>
           <option value="">Pound(lb)</option>
         </select>
-
-        <!-- <input
-          type="number"
-          onchange="getInputValue(this)"
-          min="0"
-          id="agirliktipi2"
-          placeholder="GRAM"
-        />
-        <input
-          type="number"
-          onchange="getInputValue(this)"
-          min="0"
-          id="agirliktipi3"
-          placeholder="POUND"
-        /> -->
       </div>
       <!-- sıcaklık inputları-->
       <div class="divler" id="sicaklikdivi">
         <input
           oninput="this.value=this.value.replaceAll(/[^\d\.]/g, '');"
+          onchange="getInputValueSicaklik(this)"
           type="number"
           id="sicakliktipi"
           placeholder="Bir değer giriniz"
@@ -89,6 +75,7 @@
         <input
           type="number"
           id="uzunluktipi"
+          onchange="getInputValueUzunluk(this)"
           placeholder="Bir değer giriniz"
           oninput="this.value=this.value.replaceAll(/[^\d\.]/g, '');"
           min="0"
@@ -114,6 +101,7 @@
         <input
           type="number"
           id="hacimtipi"
+          onchange="getInputValueHacim(this)"
           placeholder="Bir değer giriniz"
           oninput="this.value=this.value.replaceAll(/[^\d\.]/g, '');"
           min="0"
