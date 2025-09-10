@@ -45,7 +45,7 @@ function setSelectionValue(newValue) {
   }
 }
 
-function getInputValue(inValue) {
+function getInputValueAgirlik(inValue) {
   const input1 = document.getElementById("agirliktipi");
   const inputValue1 = input1.value;
   const input2 = document.getElementById("agirliktipi2");

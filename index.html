@@ -21,42 +21,116 @@
       <!-- agırlık inputları-->
       <div class="divler" id="agirlikdivi">
         <input
+          oninput="this.value=this.value.replaceAll(/[^\d\.]/g, '');"
           type="number"
           onchange="getInputValue(this) , updateValues(this)"
+          min="0"
           id="agirliktipi"
-          placeholder="KG"
+          placeholder="Bir değer giriniz"
         />
-        <input
+        <label style="color: white" for="agirlik">Dönüştürmek istiyorum:</label>
+
+        <select name="agirlik" id="girilen_agirlik">
+          <option value="">Kilogram(kg)</option>
+          <option value="">Gram(g)</option>
+          <option value="">Pound(lb)</option>
+        </select>
+        <label style="color: white" for="agirlik">'a</label>
+
+        <select name="agirlik" id="donusturulen_agirlik">
+          <option value="">Kilogram(kg)</option>
+          <option value="">Gram(g)</option>
+          <option value="">Pound(lb)</option>
+        </select>
+
+        <!-- <input
           type="number"
           onchange="getInputValue(this)"
+          min="0"
           id="agirliktipi2"
           placeholder="GRAM"
         />
         <input
           type="number"
           onchange="getInputValue(this)"
+          min="0"
           id="agirliktipi3"
           placeholder="POUND"
-        />
+        /> -->
       </div>
       <!-- sıcaklık inputları-->
       <div class="divler" id="sicaklikdivi">
-        <input type="number" id="sicakliktipi" placeholder="°C" />
-        <input type="number" id="sicakliktipi2" placeholder="°F " />
-        <input type="number" id="sicakliktipi3" placeholder="K" />
+        <input
+          oninput="this.value=this.value.replaceAll(/[^\d\.]/g, '');"
+          type="number"
+          id="sicakliktipi"
+          placeholder="Bir değer giriniz"
+          min="0"
+        />
+        <label style="color: white" for="sicaklik"
+          >Dönüştürmek istiyorum:</label
+        >
+
+        <select name="sicaklik" id="girilen_sicaklik">
+          <option value="">Kelvin (K)</option>
+          <option value="">Santigrat(°C)</option>
+          <option value="">Fahrenayt(°F)</option>
+        </select>
+        <label style="color: white" for="sicaklik">'a</label>
+
+        <select name="sicaklik" id="donusturulen_sicaklik">
+          <option value="">Kelvin (K)</option>
+          <option value="">Santigrat(°C)</option>
+          <option value="">Fahrenayt(°F)</option>
+        </select>
       </div>
       <!-- uzunluk inputları-->
       <div class="divler" id="uzunlukdivi">
-        <input type="number" id="uzunluktipi" placeholder="Metre" />
-        <input type="number" id="uzunluktipi2" placeholder="Santimetre " />
-        <input type="number" id="uzunluktipi3" placeholder="Feet " />
-        <input type="number" id="uzunluktipi4" placeholder="İnç " />
+        <input
+          type="number"
+          id="uzunluktipi"
+          placeholder="Bir değer giriniz"
+          oninput="this.value=this.value.replaceAll(/[^\d\.]/g, '');"
+          min="0"
+        />
+        <label style="color: white" for="uzunluk">Dönüştürmek istiyorum:</label>
+        <select name="uzunluk" id="girilen_uzunluk">
+          <option value="">Metre(m)</option>
+          <option value="">Santimetre(cm)</option>
+          <option value="">Feet(ft)</option>
+          <option value="">İnç(in)</option>
+        </select>
+        <label style="color: white" for="uzunluk">'dan</label>
+
+        <select name="uzunluk" id="donusturulen_uzunluk">
+          <option value="">Metre(m)</option>
+          <option value="">Santimetre(cm)</option>
+          <option value="">Feet(ft)</option>
+          <option value="">İnç(in)</option>
+        </select>
       </div>
       <!-- hacim inputları-->
       <div class="divler" id="hacimdivi">
-        <input type="number" id="hacimtipi" placeholder="Litre " />
-        <input type="number" id="hacimtipi2" placeholder="Mililitre  " />
-        <input type="number" id="hacimtipi3" placeholder="Galon " />
+        <input
+          type="number"
+          id="hacimtipi"
+          placeholder="Bir değer giriniz"
+          oninput="this.value=this.value.replaceAll(/[^\d\.]/g, '');"
+          min="0"
+        />
+        <label style="color: white" for="hacim">Dönüştürmek istiyorum:</label>
+        <select name="hacim" id="girilen_hacim">
+          <option value="">Litre(L)</option>
+          <option value="">Mililitre</option>
+          <option value="">Galon(gal)</option>
+        </select>
+        <label style="color: white" for="hacim">'dan</label>
+
+        <select name="hacim" id="donusturulen_hacim">
+          <option value="">Litre(L)</option>
+          <option value="">Mililitre</option>
+          <option value="">Galon(gal)</option>
+        </select>
       </div>
     </div>
   </body>
