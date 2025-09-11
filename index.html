@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <script src="javascript.js"></script>
+    <script src="calculater.js"></script>
     <title>CONVERTER APP</title>
   </head>
   <body>
@@ -137,7 +138,7 @@
           min="0"
         />
         <label style="color: white" for="hacim">Dönüştürmek istiyorum:</label>
-        <select name="hacim" id="girilen_hacim">
+        <select name="hacim" onchange="volumeConverter()" id="girilen_hacim">
           <option value="l">Litre(L)</option>
           <option value="ml">Mililitre</option>
           <option value="gal">Galon(gal)</option>

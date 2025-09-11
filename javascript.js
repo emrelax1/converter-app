@@ -1,139 +1,9 @@
-const convertions = [
-  {
-    from_key: "kg",
-    to_key: "lb",
-    multiplier: 2.20462,
-  },
-  {
-    from_key: "kg",
-    to_key: "g",
-    multiplier: 1000,
-  },
-  {
-    from_key: "g",
-    to_key: "kg",
-    multiplier: 0.001,
-  },
-  {
-    from_key: "g",
-    to_key: "lb",
-    multiplier: 0.00220462,
-  },
-  {
-    from_key: "lb",
-    to_key: "kg",
-    multiplier: 0.45359237,
-  },
-  {
-    from_key: "lb",
-    to_key: "g",
-    multiplier: 453.59237,
-  },
-  {
-    from_key: "m",
-    to_key: "cm",
-    multiplier: 100,
-  },
-  {
-    from_key: "m",
-    to_key: "ft",
-    multiplier: 3.28084,
-  },
-  {
-    from_key: "m",
-    to_key: "in",
-    multiplier: 39.3701,
-  },
-  {
-    from_key: "cm",
-    to_key: "m",
-    multiplier: 0.01,
-  },
-  {
-    from_key: "cm",
-    to_key: "ft",
-    multiplier: 0.0328084,
-  },
-  {
-    from_key: "cm",
-    to_key: "in",
-    multiplier: 0.3937,
-  },
-  {
-    from_key: "ft",
-    to_key: "m",
-    multiplier: 0.3048,
-  },
-  {
-    from_key: "ft",
-    to_key: "cm",
-    multiplier: 30.48,
-  },
-  {
-    from_key: "ft",
-    to_key: "in",
-    multiplier: 12,
-  },
-  {
-    from_key: "in",
-    to_key: "m",
-    multiplier: 0.0254,
-  },
-  {
-    from_key: "in",
-    to_key: "cm",
-    multiplier: 2.54,
-  },
-  {
-    from_key: "in",
-    to_key: "ft",
-    multiplier: 0.08333,
-  },
-  {
-    from_key: "l",
-    to_key: "ml",
-    multiplier: 1000,
-  },
-  {
-    from_key: "l",
-    to_key: "gal",
-    multiplier: 0.2642,
-  },
-  {
-    from_key: "ml",
-    to_key: "l",
-    multiplier: 0.001,
-  },
-  {
-    from_key: "ml",
-    to_key: "gal",
-    multiplier: 0.0002642,
-  },
-  {
-    from_key: "gal",
-    to_key: "l",
-    multiplier: 3.78541,
-  },
-  {
-    from_key: "gal",
-    to_key: "ml",
-    multiplier: 3785.41,
-  },
-  {
-    from_key: "k",
-    to_key: "c",
-    multiplier: (value) => {
-      return value - 273.15;
-    },
-  },
-  {
-    from_key: "f",
-    to_key: "c",
-    multiplier: (value) => {
-      return ((value - 32) * 5) / 9;
-    },
-  },
-];
+const converter_type = {
+  agirlik: ["kg", "g", "lb"],
+  sicaklik: ["k", "c", "f"],
+  uzunluk: ["m", "cm", "ft", "in"],
+  hacim: ["l", "ml", "gal"],
+};
 
 function setSelectionValue(newValue) {
   const dropdown = document.getElementById("type");
@@ -147,11 +17,31 @@ function setSelectionValue(newValue) {
     document.getElementById("hacimdivi").style.display = "none";
   }
   if (value == "agirlik") {
-    document.getElementById("agirlikdivi").style.display = "block";
-    document.getElementById("sicaklikdivi").style.display = "none";
-    document.getElementById("uzunlukdivi").style.display = "none";
-    document.getElementById("hacimdivi").style.display = "none";
+    converter_type?.value;
   }
+  /* const userSelection = document.getElementById("conversionType")
+    const birimlerSecilen = birimler?.[userSelection.value]
+    console.log(birimlerSecilen);
+    
+    function optionValueAdd(birimlerSecilen){
+    console.log(document.querySelectorAll(".selector"))
+    const selectors = document.querySelectorAll(".selector")
+    selectors[0].innerHTML = ""
+    selectors[1].innerHTML = ""
+    for(let birim of birimlerSecilen){
+        console.log(birim)
+        selectors.forEach(element => {
+            console.log(element)
+            element.innerHTML += <option value = "${birim}">${birim}</option>; 
+        });
+    }
+}
+    
+    
+    if(userSelection.value == "agirlik"){
+        denemeparagraf.innerHTML = "şuan agirliktasın";
+        optionValueAdd(birimlerSecilen)
+    } */
   if (value == "sicaklik") {
     document.getElementById("agirlikdivi").style.display = "none";
     document.getElementById("sicaklikdivi").style.display = "block";
@@ -209,7 +99,7 @@ function weightConverter() {
   ).multiplier;
 
   if (current_multiplier) {
-    var converter_result = parseFloat(inputValueAgirlik) * current_multiplier;
+    var converter_result = current_multiplier(parseFloat(inputValueAgirlik));
     document.getElementById("agirliksonuc").value = converter_result;
   }
 }
@@ -248,7 +138,7 @@ function lengthConverter() {
   ).multiplier;
 
   if (current_multiplier) {
-    var converter_result = parseFloat(inputValueUzunluk) * current_multiplier;
+    var converter_result = current_multiplier(parseFloat(inputValueUzunluk));
     document.getElementById("uzunluksonuc").value = converter_result;
   }
 }
@@ -268,7 +158,9 @@ function volumeConverter() {
   ).multiplier;
 
   if (current_multiplier) {
-    var converter_result = parseFloat(inputValueVolume) * current_multiplier;
+    var converter_result = current_multiplier(parseFloat(inputValueVolume));
     document.getElementById("hacimsonuc").value = converter_result;
   }
 }
+
+function optionValueAdd() {}
