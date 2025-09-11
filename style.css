@@ -16,7 +16,7 @@ html {
   width: 10%;
   height: 48px;
 }
-.none {
+/* .none {
   display: none;
 }
 #agirlikdivi {
@@ -30,7 +30,7 @@ html {
 }
 #sicaklikdivi {
   display: none;
-}
+} */
 
 .divler {
   display: flex;

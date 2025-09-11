@@ -1,71 +1,51 @@
 const converter_type = {
-  agirlik: ["kg", "g", "lb"],
-  sicaklik: ["k", "c", "f"],
-  uzunluk: ["m", "cm", "ft", "in"],
-  hacim: ["l", "ml", "gal"],
+  agirlik: ["Kilogram(kg)", "Gram(g)", "Pound(lb)"],
+  sicaklik: ["Kelvin(K)", "Celsius(°C)", "Fahrenayt(°F)"],
+  uzunluk: ["Metre(m)", "Santimetre(cm)", "Feet(ft)", "İnç(in)"],
+  hacim: ["Litre(L)", "Mililitre(ml)", "Galon(gal)"],
 };
 
 function setSelectionValue(newValue) {
   const dropdown = document.getElementById("type");
   const value = dropdown.value;
+  const birimlerSecilen = converter_type?.[value];
+  console.log("birimler seçilen : ", birimlerSecilen);
+
   const text = dropdown.options[dropdown.selectedIndex].text;
 
   if (value == null) {
-    document.getElementById("agirlikdivi").style.display = "block";
-    document.getElementById("sicaklikdivi").style.display = "none";
-    document.getElementById("uzunlukdivi").style.display = "none";
-    document.getElementById("hacimdivi").style.display = "none";
+    optionValueAdd(birimlerSecilen);
   }
   if (value == "agirlik") {
-    converter_type?.value;
+    optionValueAdd(birimlerSecilen);
+    console.log("agirlik saçildi");
   }
-  /* const userSelection = document.getElementById("conversionType")
-    const birimlerSecilen = birimler?.[userSelection.value]
-    console.log(birimlerSecilen);
-    
-    function optionValueAdd(birimlerSecilen){
-    console.log(document.querySelectorAll(".selector"))
-    const selectors = document.querySelectorAll(".selector")
-    selectors[0].innerHTML = ""
-    selectors[1].innerHTML = ""
-    for(let birim of birimlerSecilen){
-        console.log(birim)
-        selectors.forEach(element => {
-            console.log(element)
-            element.innerHTML += <option value = "${birim}">${birim}</option>; 
-        });
-    }
-}
-    
-    
-    if(userSelection.value == "agirlik"){
-        denemeparagraf.innerHTML = "şuan agirliktasın";
-        optionValueAdd(birimlerSecilen)
-    } */
+
   if (value == "sicaklik") {
-    document.getElementById("agirlikdivi").style.display = "none";
-    document.getElementById("sicaklikdivi").style.display = "block";
-    document.getElementById("uzunlukdivi").style.display = "none";
-    document.getElementById("hacimdivi").style.display = "none";
+    optionValueAdd(birimlerSecilen);
   }
   if (value == "uzunluk") {
-    document.getElementById("agirlikdivi").style.display = "none";
-    document.getElementById("sicaklikdivi").style.display = "none";
-    document.getElementById("uzunlukdivi").style.display = "block";
-    document.getElementById("hacimdivi").style.display = "none";
+    optionValueAdd(birimlerSecilen);
   }
   if (value == "hacim") {
-    document.getElementById("agirlikdivi").style.display = "none";
-    document.getElementById("sicaklikdivi").style.display = "none";
-    document.getElementById("uzunlukdivi").style.display = "none";
-    document.getElementById("hacimdivi").style.display = "block";
+    optionValueAdd(birimlerSecilen);
   }
 }
 
-/* function getInputValueAgirlik(ValueAgirlik) {
-  
-  console.log(inputValueAgirlik);
-} */
+function optionValueAdd(birimlerSecilen) {
+  console.log("SELECTOR:", document.querySelectorAll(".selector"));
+  const selectors = document.querySelectorAll(".selector");
+  selectors[0].innerHTML = "";
+  selectors[1].innerHTML = "";
+  for (let birim of birimlerSecilen) {
+    console.log("birim: ", birim);
+    selectors.forEach((element) => {
+      console.log("Element:", element);
+      element.innerHTML += `<option value="${birim}">${birim}</option>`;
+    });
+  }
+}
+
 function getInputValueSicaklik(ValueSicaklik) {
   const input2 = document.getElementById("sicakliktipi");
   const inputValueSicaklik = input2.value;
@@ -162,5 +142,3 @@ function volumeConverter() {
     document.getElementById("hacimsonuc").value = converter_result;
   }
 }
-
-function optionValueAdd() {}

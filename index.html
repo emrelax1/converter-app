@@ -8,7 +8,7 @@
     <script src="calculater.js"></script>
     <title>CONVERTER APP</title>
   </head>
-  <body>
+  <body onload="setSelectionValue(this)">
     <div class="container">
       <!--Chosee of converter type -->
       <h1>CONVERTER APP</h1>
@@ -35,27 +35,20 @@
           name="agirlik"
           id="girilen_agirlik"
           onchange="weightConverter()"
-        >
-          <option value="kg">Kilogram(kg)</option>
-          <option value="g">Gram(g)</option>
-          <option value="lb">Pound(lb)</option>
-        </select>
+          class="selector"
+        ></select>
         <label style="color: white" for="agirlik">'dan</label>
 
         <select
           name="agirlik"
           id="donusturulen_agirlik"
           onchange="weightConverter()"
-        >
-          <option value="kg">Kilogram(kg)</option>
-          <option value="g">Gram(g)</option>
-          <option value="lb">Pound(lb)</option>
-        </select>
+          class="selector"
+        ></select>
         <label style="color: white" for="agirliksonuc">'a = </label>
         <input type="number" min="0" id="agirliksonuc" placeholder="" />
       </div>
-      <!-- sıcaklık inputları-->
-      <div class="divler" id="sicaklikdivi">
+      <!-- <div class="divler" id="sicaklikdivi">
         <input
           oninput="this.value=this.value.replaceAll(/[^\d\.]/g, '');"
           onchange="getInputValueSicaklik(this)"
@@ -91,7 +84,6 @@
         <label style="color: white" for="sicakliksonuc">'a = </label>
         <input type="number" min="0" id="sicakliksonuc" placeholder="" />
       </div>
-      <!-- uzunluk inputları-->
       <div class="divler" id="uzunlukdivi">
         <input
           type="number"
@@ -127,7 +119,6 @@
         <label style="color: white" for="uzunluksonuc">'a = </label>
         <input type="number" min="0" id="uzunluksonuc" placeholder="" />
       </div>
-      <!-- hacim inputları-->
       <div class="divler" id="hacimdivi">
         <input
           type="number"
@@ -156,7 +147,7 @@
         </select>
         <label style="color: white" for="hacimsonuc">'a = </label>
         <input type="number" min="0" id="hacimsonuc" placeholder="" />
-      </div>
+      </div> -->
     </div>
   </body>
 </html>
