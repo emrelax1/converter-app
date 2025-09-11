@@ -9,40 +9,38 @@ function setSelectionValue(newValue) {
   const dropdown = document.getElementById("type");
   const value = dropdown.value;
   const birimlerSecilen = converter_type?.[value];
-  console.log("birimler seçilen : ", birimlerSecilen);
+
+  optionValueAdd(birimlerSecilen);
 
   const text = dropdown.options[dropdown.selectedIndex].text;
-
-  if (value == null) {
-    optionValueAdd(birimlerSecilen);
-  }
-  if (value == "agirlik") {
-    optionValueAdd(birimlerSecilen);
-    console.log("agirlik saçildi");
-  }
-
-  if (value == "sicaklik") {
-    optionValueAdd(birimlerSecilen);
-  }
-  if (value == "uzunluk") {
-    optionValueAdd(birimlerSecilen);
-  }
-  if (value == "hacim") {
-    optionValueAdd(birimlerSecilen);
-  }
 }
 
 function optionValueAdd(birimlerSecilen) {
-  console.log("SELECTOR:", document.querySelectorAll(".selector"));
   const selectors = document.querySelectorAll(".selector");
   selectors[0].innerHTML = "";
   selectors[1].innerHTML = "";
   for (let birim of birimlerSecilen) {
     console.log("birim: ", birim);
+
     selectors.forEach((element) => {
-      console.log("Element:", element);
       element.innerHTML += `<option value="${birim}">${birim}</option>`;
     });
+  }
+}
+function inputMinChanger() {
+  const agirliktipi = document.getElementById("agirliktipi");
+  const input_data1 = document.getElementById("girilen_agirlik").value;
+
+  if (input_data1 == "Celsius(°C)" || input_data1 == "Fahrenayt(°F)") {
+    agirliktipi.min = "-200";
+    console.log("min -300 setlendi");
+  } else {
+    console.log("min 0 setlendi");
+    agirliktipi.min = "0";
+
+    if (agirliktipi.value < 0) {
+      alert("Negatif değeri alamaz !!");
+    }
   }
 }
 
@@ -62,9 +60,10 @@ function getInputValueHacim(ValueHacim) {
   console.log(inputValueHacim);
 }
 
-function weightConverter() {
+function converterFunc() {
   const input1 = document.getElementById("agirliktipi");
   var inputValueAgirlik = input1.value;
+
   const selectedWeight1 = document.getElementById("girilen_agirlik");
   const selectedWeight1Value = selectedWeight1.value;
   const selectedWeight2 = document.getElementById("donusturulen_agirlik");
@@ -82,7 +81,8 @@ function weightConverter() {
     var converter_result = current_multiplier(parseFloat(inputValueAgirlik));
     document.getElementById("agirliksonuc").value = converter_result;
   }
-}
+  inputMinChanger();
+} /* 
 function heatConverter() {
   const input2 = document.getElementById("sicakliktipi");
   var inputValueSicaklik = input2.value;
@@ -142,3 +142,4 @@ function volumeConverter() {
     document.getElementById("hacimsonuc").value = converter_result;
   }
 }
+ */

@@ -22,19 +22,20 @@
       <!-- agırlık inputları-->
       <div class="divler" id="agirlikdivi">
         <input
-          oninput="this.value=this.value.replaceAll(/[^\d\.]/g, '');"
+          id="agirliktipi"
           type="number"
           min="0"
-          onchange="weightConverter()"
-          id="agirliktipi"
+          onchange="converterFunc()"
           placeholder="Bir değer giriniz"
+          autofocus="autofocus"
+          required="required"
         />
         <label style="color: white" for="agirlik">Dönüştürmek istiyorum:</label>
 
         <select
           name="agirlik"
           id="girilen_agirlik"
-          onchange="weightConverter()"
+          onchange="converterFunc()"
           class="selector"
         ></select>
         <label style="color: white" for="agirlik">'dan</label>
@@ -42,11 +43,17 @@
         <select
           name="agirlik"
           id="donusturulen_agirlik"
-          onchange="weightConverter()"
+          onchange="converterFunc()"
           class="selector"
         ></select>
         <label style="color: white" for="agirliksonuc">'a = </label>
-        <input type="number" min="0" id="agirliksonuc" placeholder="" />
+        <input
+          type="number"
+          min="0"
+          id="agirliksonuc"
+          placeholder=""
+          disabled="disabled"
+        />
       </div>
       <!-- <div class="divler" id="sicaklikdivi">
         <input
