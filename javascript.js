@@ -11,6 +11,7 @@ function setSelectionValue(newValue) {
   const birimlerSecilen = converter_type?.[value];
 
   optionValueAdd(birimlerSecilen);
+  filterToUnitOptions();
 
   const text = dropdown.options[dropdown.selectedIndex].text;
 }
@@ -37,13 +38,20 @@ function inputMinChanger() {
   } else {
     console.log("min 0 setlendi");
     agirliktipi.min = "0";
-
-    if (agirliktipi.value < 0) {
-      alert("Negatif değeri alamaz !!");
-    }
   }
 }
 
+function filterToUnitOptions() {
+  const fromValue = document.getElementById("girilen_agirlik").value;
+  const toUnit = document.getElementById("donusturulen_agirlik");
+
+  for (let i = 0; i < toUnit.options.length; i++) {
+    const option = toUnit.options[i];
+    const isSame = option.value === fromValue;
+    option.disabled = isSame;
+    //aynı birim fronUnitte 1 ise toUnitte 0 olsun., ilk seçilen birim seçildiyse , ikincide diğeri seçilsin
+  }
+}
 function getInputValueSicaklik(ValueSicaklik) {
   const input2 = document.getElementById("sicakliktipi");
   const inputValueSicaklik = input2.value;
@@ -69,9 +77,6 @@ function converterFunc() {
   const selectedWeight2 = document.getElementById("donusturulen_agirlik");
   const selectedWeight2Value = selectedWeight2.value;
 
-  console.log("selectedWeight1Value", selectedWeight1Value);
-  console.log("selectedWeight2Value", selectedWeight2Value);
-
   let current_multiplier = convertions.find(
     (x) =>
       x.from_key == selectedWeight1Value && x.to_key == selectedWeight2Value
@@ -82,64 +87,4 @@ function converterFunc() {
     document.getElementById("agirliksonuc").value = converter_result;
   }
   inputMinChanger();
-} /* 
-function heatConverter() {
-  const input2 = document.getElementById("sicakliktipi");
-  var inputValueSicaklik = input2.value;
-  const selectedHeat1 = document.getElementById("girilen_sicaklik");
-  const selectedHeat1Value = selectedHeat1.value;
-  const selectedHeat2 = document.getElementById("donusturulen_sicaklik");
-  const selectedHeat2Value = selectedHeat2.value;
-  console.log("selectedHeat1Value", selectedHeat1Value);
-  console.log("selectedHeat2Value", selectedHeat2Value);
-
-  let current_multiplier = convertions.find(
-    (x) => x.from_key == selectedHeat1Value && x.to_key == selectedHeat2Value
-  ).multiplier;
-
-  if (current_multiplier) {
-    var converter_result = current_multiplier(parseFloat(inputValueSicaklik));
-    document.getElementById("sicakliksonuc").value = converter_result;
-  }
 }
-function lengthConverter() {
-  const input3 = document.getElementById("uzunluktipi");
-  var inputValueUzunluk = input3.value;
-  const selectedLength1 = document.getElementById("girilen_uzunluk");
-  const selectedLength1Value = selectedLength1.value;
-  const selectedLength2 = document.getElementById("donusturulen_uzunluk");
-  const selectedLength2Value = selectedLength2.value;
-  console.log("selectedLength1Value", selectedLength1Value);
-  console.log("selectedLength2Value", selectedLength2Value);
-
-  let current_multiplier = convertions.find(
-    (x) =>
-      x.from_key == selectedLength1Value && x.to_key == selectedLength2Value
-  ).multiplier;
-
-  if (current_multiplier) {
-    var converter_result = current_multiplier(parseFloat(inputValueUzunluk));
-    document.getElementById("uzunluksonuc").value = converter_result;
-  }
-}
-function volumeConverter() {
-  const input4 = document.getElementById("hacimtipi");
-  var inputValueVolume = input4.value;
-  const selectedVolume1 = document.getElementById("girilen_hacim");
-  const selectedVolume1Value = selectedVolume1.value;
-  const selectedVolume2 = document.getElementById("donusturulen_hacim");
-  const selectedVolume2Value = selectedVolume2.value;
-  console.log("selectedVolume1Value", selectedVolume1Value);
-  console.log("selectedVolume2Value", selectedVolume2Value);
-
-  let current_multiplier = convertions.find(
-    (x) =>
-      x.from_key == selectedVolume1Value && x.to_key == selectedVolume2Value
-  ).multiplier;
-
-  if (current_multiplier) {
-    var converter_result = current_multiplier(parseFloat(inputValueVolume));
-    document.getElementById("hacimsonuc").value = converter_result;
-  }
-}
- */

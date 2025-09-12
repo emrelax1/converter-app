@@ -16,21 +16,6 @@ html {
   width: 10%;
   height: 48px;
 }
-/* .none {
-  display: none;
-}
-#agirlikdivi {
-  display: block;
-}
-#uzunlukdivi {
-  display: none;
-}
-#hacimdivi {
-  display: none;
-}
-#sicaklikdivi {
-  display: none;
-} */
 
 .divler {
   display: flex;
