@@ -9,54 +9,67 @@
     <title>CONVERTER APP</title>
   </head>
   <body onload="setSelectionValue(this)">
-    <div class="container">
+    <div class="main">
       <!--Chosee of converter type -->
-      <h1>CONVERTER APP</h1>
-      <select id="type" onchange="setSelectionValue(this),converterFunc()">
+      <h1 class="title">CONVERTER APP</h1>
+      <h5 class="subtitle" for="selecttype">Kategori Seçiniz</h5>
+      <br />
+      <select
+        class="selecttype"
+        name="selecttype"
+        id="type"
+        onchange="setSelectionValue(this),converterFunc()"
+      >
         <option value="weight" selected>Ağırlık Dönüşümü</option>
         <option value="heat">Sıcaklık Dönüşümü</option>
         <option value="length">Uzunluk Dönüşümü</option>
         <option value="volume">Hacim Dönüşümü</option>
       </select>
+
       <!--entries according to the type entered-->
-      <!-- main div-->
-      <div class="divs" id="common_div">
-        <!-- numeric input field for user inputs-->
-        <input
-          id="taken_value"
-          type="number"
-          min="0"
-          oninput="converterFunc()"
-          placeholder="Bir değer giriniz"
-          autofocus="autofocus"
-          required="required"
-        />
-        <label style="color: white" for="selector"
-          >Dönüştürmek istiyorum:</label
-        >
-        <!-- select, where the unit of the entered value is selected-->
-        <select
-          name="selector"
-          id="from_unit"
-          onchange="converterFunc(),filterToUnitOptions()"
-          class="selector"
-        ></select>
-        <label style="color: white" for="selector">'dan</label>
-        <!-- selection of unit to be converted-->
-        <select
-          name="selector"
-          id="to_unit"
-          onchange="converterFunc()"
-          class="selector"
-        ></select>
-        <label style="color: white" for="result">'a = </label>
-        <input
-          type="number"
-          min="0"
-          id="result"
-          placeholder=""
-          disabled="disabled"
-        />
+      <div class="container">
+        <!-- main div-->
+        <div class="divs" id="common_div">
+          <!-- numeric input field for user inputs-->
+          <input
+            id="taken_value"
+            type="number"
+            min="0"
+            oninput="converterFunc()"
+            placeholder="Bir değer giriniz"
+            autofocus="autofocus"
+            required="required"
+            class="input"
+          />
+
+          <!-- select, where the unit of the entered value is selected-->
+          <select
+            name="selector"
+            id="from_unit"
+            onchange="converterFunc(),filterToUnitOptions()"
+            class="selector"
+          ></select>
+          <label id="label" style="color: white; font-size: 69px" for="selector"
+            >🔄</label
+          >
+          <span class="arrow"></span>
+
+          <!-- selection of unit to be converted-->
+          <select
+            name="selector"
+            id="to_unit"
+            onchange="converterFunc()"
+            class="selector"
+          ></select>
+          <input
+            type="number"
+            min="0"
+            id="result"
+            placeholder=""
+            disabled="disabled"
+            class="result"
+          />
+        </div>
       </div>
     </div>
   </body>
