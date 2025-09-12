@@ -1,90 +1,84 @@
+// converter to type
 const converter_type = {
-  agirlik: ["Kilogram(kg)", "Gram(g)", "Pound(lb)"],
-  sicaklik: ["Kelvin(K)", "Celsius(°C)", "Fahrenayt(°F)"],
-  uzunluk: ["Metre(m)", "Santimetre(cm)", "Feet(ft)", "İnç(in)"],
-  hacim: ["Litre(L)", "Mililitre(ml)", "Galon(gal)"],
+  weight: ["Kilogram(kg)", "Gram(g)", "Pound(lb)"],
+  heat: ["Kelvin(K)", "Celsius(°C)", "Fahrenayt(°F)"],
+  length: ["Metre(m)", "Santimetre(cm)", "Feet(ft)", "İnç(in)"],
+  volume: ["Litre(L)", "Mililitre(ml)", "Galon(gal)"],
 };
-
+// The function we call when we select the conversion type
+// (adjusting the dropdown menu entries, not being able to
+// select the same unit type)
 function setSelectionValue(newValue) {
   const dropdown = document.getElementById("type");
   const value = dropdown.value;
-  const birimlerSecilen = converter_type?.[value];
+  const selected_units = converter_type?.[value];
 
-  optionValueAdd(birimlerSecilen);
+  optionValueAdd(selected_units);
   filterToUnitOptions();
 
   const text = dropdown.options[dropdown.selectedIndex].text;
 }
-
-function optionValueAdd(birimlerSecilen) {
+// function that dynamically adds options to drop-down lists
+function optionValueAdd(selected_units) {
   const selectors = document.querySelectorAll(".selector");
   selectors[0].innerHTML = "";
   selectors[1].innerHTML = "";
-  for (let birim of birimlerSecilen) {
-    console.log("birim: ", birim);
+  for (let unit of selected_units) {
+    console.log("unit: ", unit);
 
     selectors.forEach((element) => {
-      element.innerHTML += `<option value="${birim}">${birim}</option>`;
+      element.innerHTML += `<option value="${unit}">${unit}</option>`;
     });
   }
 }
+// Since Fahrenheit and Celsius can take negative values,
+// the function that allows us to take negative values ​​into its input
 function inputMinChanger() {
-  const agirliktipi = document.getElementById("agirliktipi");
-  const input_data1 = document.getElementById("girilen_agirlik").value;
+  const taken_value = document.getElementById("taken_value");
+  const input_data1 = document.getElementById("from_unit").value;
 
   if (input_data1 == "Celsius(°C)" || input_data1 == "Fahrenayt(°F)") {
-    agirliktipi.min = "-200";
+    taken_value.min = "-200";
     console.log("min -300 setlendi");
   } else {
     console.log("min 0 setlendi");
-    agirliktipi.min = "0";
+    taken_value.min = "0";
   }
 }
-
+// same unit selection control function
 function filterToUnitOptions() {
-  const fromValue = document.getElementById("girilen_agirlik").value;
-  const toUnit = document.getElementById("donusturulen_agirlik");
+  const fromValue = document.getElementById("from_unit").value;
+  const toUnit = document.getElementById("to_unit");
 
   for (let i = 0; i < toUnit.options.length; i++) {
     const option = toUnit.options[i];
     const isSame = option.value === fromValue;
     option.disabled = isSame;
-    //aynı birim fronUnitte 1 ise toUnitte 0 olsun., ilk seçilen birim seçildiyse , ikincide diğeri seçilsin
+    //aynı unit fronUnitte 1 ise toUnitte 0 olsun., ilk seçilen unit seçildiyse , ikincide diğeri seçilsin
   }
 }
-function getInputValueSicaklik(ValueSicaklik) {
-  const input2 = document.getElementById("sicakliktipi");
-  const inputValueSicaklik = input2.value;
-  console.log(inputValueSicaklik);
-}
-function getInputValueUzunluk(ValueUzunluk) {
-  const input3 = document.getElementById("uzunluktipi");
-  const inputValueUzunluk = input3.value;
-  console.log(inputValueUzunluk);
-}
-function getInputValueHacim(ValueHacim) {
-  const input4 = document.getElementById("hacimtipi");
-  const inputValueHacim = input4.value;
-  console.log(inputValueHacim);
-}
-
+// calculation function
 function converterFunc() {
-  const input1 = document.getElementById("agirliktipi");
-  var inputValueAgirlik = input1.value;
+  const input1 = document.getElementById("taken_value");
+  var inputValue = input1.value;
 
-  const selectedWeight1 = document.getElementById("girilen_agirlik");
-  const selectedWeight1Value = selectedWeight1.value;
-  const selectedWeight2 = document.getElementById("donusturulen_agirlik");
-  const selectedWeight2Value = selectedWeight2.value;
+  const selectedUnit1 = document.getElementById("from_unit");
+  const selectedUnit1Value = selectedUnit1.value;
+  const selectedUnit2 = document.getElementById("to_unit");
+  const selectedUnit2Value = selectedUnit2.value;
 
-  let current_multiplier = convertions.find(
-    (x) =>
-      x.from_key == selectedWeight1Value && x.to_key == selectedWeight2Value
-  ).multiplier;
+  if (selectedUnit1Value == selectedUnit2Value) {
+    document.getElementById("result").value = inputValue;
+  } else {
+    let current_multiplier = convertions.find(
+      (x) => x.from_key == selectedUnit1Value && x.to_key == selectedUnit2Value
+    ).multiplier;
 
-  if (current_multiplier) {
-    var converter_result = current_multiplier(parseFloat(inputValueAgirlik));
-    document.getElementById("agirliksonuc").value = converter_result;
+    if (current_multiplier) {
+      var converter_result = current_multiplier(parseFloat(inputValue));
+      document.getElementById("result").value = converter_result;
+    }
   }
+
   inputMinChanger();
 }

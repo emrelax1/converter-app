@@ -17,7 +17,7 @@ html {
   height: 48px;
 }
 
-.divler {
+.divs {
   display: flex;
   background-color: black;
   width: 900px;
@@ -27,7 +27,7 @@ html {
   flex-wrap: wrap;
   gap: 10px;
 }
-.divler input {
+.divs input {
   background-color: #fff;
   border: 1px solid #bebed6;
   width: 10%;

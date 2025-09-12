@@ -12,45 +12,48 @@
     <div class="container">
       <!--Chosee of converter type -->
       <h1>CONVERTER APP</h1>
-      <select id="type" onchange="setSelectionValue(this)">
-        <option value="agirlik" selected>Ağırlık Dönüşümü</option>
-        <option value="sicaklik">Sıcaklık Dönüşümü</option>
-        <option value="uzunluk">Uzunluk Dönüşümü</option>
-        <option value="hacim">Hacim Dönüşümü</option>
+      <select id="type" onchange="setSelectionValue(this),converterFunc()">
+        <option value="weight" selected>Ağırlık Dönüşümü</option>
+        <option value="heat">Sıcaklık Dönüşümü</option>
+        <option value="length">Uzunluk Dönüşümü</option>
+        <option value="volume">Hacim Dönüşümü</option>
       </select>
       <!--entries according to the type entered-->
-      <!-- agırlık inputları-->
-      <div class="divler" id="agirlikdivi">
+      <!-- main div-->
+      <div class="divs" id="common_div">
+        <!-- numeric input field for user inputs-->
         <input
-          id="agirliktipi"
+          id="taken_value"
           type="number"
           min="0"
-          onchange="converterFunc()"
+          oninput="converterFunc()"
           placeholder="Bir değer giriniz"
           autofocus="autofocus"
           required="required"
         />
-        <label style="color: white" for="agirlik">Dönüştürmek istiyorum:</label>
-
+        <label style="color: white" for="selector"
+          >Dönüştürmek istiyorum:</label
+        >
+        <!-- select, where the unit of the entered value is selected-->
         <select
-          name="agirlik"
-          id="girilen_agirlik"
+          name="selector"
+          id="from_unit"
+          onchange="converterFunc(),filterToUnitOptions()"
+          class="selector"
+        ></select>
+        <label style="color: white" for="selector">'dan</label>
+        <!-- selection of unit to be converted-->
+        <select
+          name="selector"
+          id="to_unit"
           onchange="converterFunc()"
           class="selector"
         ></select>
-        <label style="color: white" for="agirlik">'dan</label>
-
-        <select
-          name="agirlik"
-          id="donusturulen_agirlik"
-          onchange="converterFunc()"
-          class="selector"
-        ></select>
-        <label style="color: white" for="agirliksonuc">'a = </label>
+        <label style="color: white" for="result">'a = </label>
         <input
           type="number"
           min="0"
-          id="agirliksonuc"
+          id="result"
           placeholder=""
           disabled="disabled"
         />
