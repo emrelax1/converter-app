@@ -76,9 +76,23 @@ function converterFunc() {
 
     if (current_multiplier) {
       var converter_result = current_multiplier(parseFloat(inputValue));
-      document.getElementById("result").value = converter_result;
+      if (converter_result % 1 !== 0) {
+        let converter_result_tofixed = converter_result.toFixed(3);
+        document.getElementById("result").value = converter_result_tofixed;
+      } else {
+        document.getElementById("result").value = converter_result;
+      }
     }
   }
 
   inputMinChanger();
+}
+function changePlaces() {
+  console.log("butona tıklandı");
+  const selectedUnit1 = document.getElementById("from_unit");
+  const selectedUnit1Value = selectedUnit1.value;
+  const selectedUnit2 = document.getElementById("to_unit");
+  const selectedUnit2Value = selectedUnit2.value;
+  document.getElementById("from_unit").value = selectedUnit2Value;
+  document.getElementById("to_unit").value = selectedUnit1Value;
 }

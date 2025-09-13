@@ -10,26 +10,26 @@
   </head>
   <body onload="setSelectionValue(this)">
     <div class="main">
-      <!--Chosee of converter type -->
       <h1 class="title">CONVERTER APP</h1>
-      <h5 class="subtitle" for="selecttype">Kategori Seçiniz</h5>
-      <br />
-      <select
-        class="selecttype"
-        name="selecttype"
-        id="type"
-        onchange="setSelectionValue(this),converterFunc()"
-      >
-        <option value="weight" selected>Ağırlık Dönüşümü</option>
-        <option value="heat">Sıcaklık Dönüşümü</option>
-        <option value="length">Uzunluk Dönüşümü</option>
-        <option value="volume">Hacim Dönüşümü</option>
-      </select>
 
       <!--entries according to the type entered-->
       <div class="container">
         <!-- main div-->
         <div class="divs" id="common_div">
+          <!--Chosee of converter type -->
+          <h5 class="subtitle" for="selecttype">Kategori Seçiniz</h5>
+          <br />
+          <select
+            class="selecttype"
+            name="selecttype"
+            id="type"
+            onchange="setSelectionValue(this),converterFunc()"
+          >
+            <option value="weight" selected>Ağırlık Dönüşümü</option>
+            <option value="heat">Sıcaklık Dönüşümü</option>
+            <option value="length">Uzunluk Dönüşümü</option>
+            <option value="volume">Hacim Dönüşümü</option>
+          </select>
           <!-- numeric input field for user inputs-->
           <input
             id="taken_value"
@@ -49,7 +49,11 @@
             onchange="converterFunc(),filterToUnitOptions()"
             class="selector"
           ></select>
-          <label id="label" style="color: white; font-size: 69px" for="selector"
+          <label
+            onclick="changePlaces(),converterFunc()"
+            id="label"
+            style="color: white; font-size: 69px"
+            for="selector"
             >🔄</label
           >
           <span class="arrow"></span>
