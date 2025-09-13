@@ -9,14 +9,12 @@
     <title>CONVERTER APP</title>
   </head>
   <body onload="setSelectionValue(this)">
+    <!-- main div-->
     <div class="main">
-      <h1 class="title">CONVERTER APP</h1>
-
       <!--entries according to the type entered-->
       <div class="container">
-        <!-- main div-->
-        <div class="divs" id="common_div">
-          <!--Chosee of converter type -->
+        <div id="typeselect">
+          <h1 class="title">CONVERTER APP</h1>
           <h5 class="subtitle" for="selecttype">Kategori Seçiniz</h5>
           <br />
           <select
@@ -30,49 +28,62 @@
             <option value="length">Uzunluk Dönüşümü</option>
             <option value="volume">Hacim Dönüşümü</option>
           </select>
-          <!-- numeric input field for user inputs-->
-          <input
-            id="taken_value"
-            type="number"
-            min="0"
-            oninput="converterFunc()"
-            placeholder="Bir değer giriniz"
-            autofocus="autofocus"
-            required="required"
-            class="input"
-          />
+        </div>
+        <br />
+        <div class="divs" id="common_div">
+          <!--Chosee of converter type -->
 
+          <!-- numeric input field for user inputs-->
+          <div id="inputsUser">
+            <input
+              id="taken_value"
+              type="number"
+              min="0"
+              oninput="converterFunc()"
+              placeholder="Bir değer giriniz"
+              autofocus="autofocus"
+              required="required"
+              class="input"
+            />
+          </div>
           <!-- select, where the unit of the entered value is selected-->
-          <select
-            name="selector"
-            id="from_unit"
-            onchange="converterFunc(),filterToUnitOptions()"
-            class="selector"
-          ></select>
-          <label
-            onclick="changePlaces(),converterFunc()"
-            id="label"
-            style="color: white; font-size: 69px"
-            for="selector"
-            >🔄</label
-          >
-          <span class="arrow"></span>
+          <div>
+            <select
+              name="selector"
+              id="from_unit"
+              onchange="converterFunc(),filterToUnitOptions()"
+              class="selector"
+            ></select>
+          </div>
+          <div id="label">
+            <label
+              onclick="changePlaces(),converterFunc()"
+              id="label"
+              style="color: white; font-size: 69px"
+              for="selector"
+              ><img src="exchange.png" alt=""
+            /></label>
+          </div>
 
           <!-- selection of unit to be converted-->
-          <select
-            name="selector"
-            id="to_unit"
-            onchange="converterFunc()"
-            class="selector"
-          ></select>
-          <input
-            type="number"
-            min="0"
-            id="result"
-            placeholder=""
-            disabled="disabled"
-            class="result"
-          />
+          <div>
+            <select
+              name="selector"
+              id="to_unit"
+              onchange="converterFunc()"
+              class="selector"
+            ></select>
+          </div>
+          <div>
+            <input
+              type="number"
+              min="0"
+              id="result"
+              placeholder=""
+              disabled="disabled"
+              class="result"
+            />
+          </div>
         </div>
       </div>
     </div>
