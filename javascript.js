@@ -38,9 +38,10 @@ function inputMinChanger() {
   const input_data1 = document.getElementById("from_unit").value;
 
   if (input_data1 == "Celsius(°C)" || input_data1 == "Fahrenayt(°F)") {
-    taken_value.min = "-200";
+    taken_value.min = "-300";
     console.log("min -300 setlendi");
   } else {
+    taken_value.value = taken_value.value.replace(/[^0-9]/g, "");
     console.log("min 0 setlendi");
     taken_value.min = "0";
   }
@@ -57,6 +58,7 @@ function filterToUnitOptions() {
     //aynı unit fronUnitte 1 ise toUnitte 0 olsun., ilk seçilen unit seçildiyse , ikincide diğeri seçilsin
   }
 }
+
 // calculation function
 function converterFunc() {
   const input1 = document.getElementById("taken_value");
